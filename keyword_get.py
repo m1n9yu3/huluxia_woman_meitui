@@ -17,37 +17,41 @@ def multi_thread(idlist, path):
     #     parse_json(url, start_id+i)
     threads = []
     for i in idlist:
-        threads.append(threading.Thread(target=parse_json, args=(i,path)))
+        threads.append(threading.Thread(target=parse_json, args=(i, path)))
     for i in threads:
         i.start()
     for i in threads:
         i.join()
 
 
-def ask_url(url, path):
-    count = 0
-    i = 1
+def ask_url(url, path, number=10):
+    i = 0
+    page = 0
+    post_ids = []
+    js = get_json(url.format(i))
     while True:
-        js = get_json(url.format(i))
-        post_ids = []
+        # posts 没有内容时，退出
         if not js['posts']:
-            print("爬取完成, 共{} 个帖子".format(i))
-            return
+            break
         for post_id_i in js['posts']:
             post_ids.append(post_id_i['postID'])
-        # print(post_ids)
-
-        count += 1
-        i += 20
-        if count == 50:
-            count = 0
+            i += 1
+        # 指定爬取页数
+        number -= 1
+        if number % 5 == 0:
             multi_thread(idlist=post_ids, path=path)
+            if number == 0:
+                break
+            post_ids = []
+        js = get_json(url.format(js['start']))
+    print("爬取完成, 共{} 个帖子".format(i))
 
 
 def search_key(keyword):
     # 提供一组 _key: 074A517999865CB0A3DC24034F244DEB1E23E1512BA28A8D07315737041A1E393A13114A41B9FCE24CBD95E0AF7E0C72DC99A8E24218CC70
-    _key = input("请输入 _key: ")
+    # _key = input("请输入 _key: ")
+    _key = "074A517999865CB0A3DC24034F244DEB1E23E1512BA28A8D07315737041A1E393A13114A41B9FCE24CBD95E0AF7E0C72DC99A8E24218CC70"
     url = "http://floor.huluxia.com/post/search/ANDROID/2.1?platform=2&market_id=tool_baidu&_key" \
           "=%s&start=1&count=20&cat_id=56&keyword=%s&flag=0" % (_key, parse.quote(keyword))
     # print(url)
-    ask_url(url)
+    ask_url(url, 'search_result/')

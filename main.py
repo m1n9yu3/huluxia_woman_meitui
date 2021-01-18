@@ -9,6 +9,7 @@
 import threading
 from get_data import *
 from keyword_get import ask_url, search_key
+
 '''
 target : 目标
 http://floor.huluxia.com/post/detail/ANDROID/2.3?platform=2&market_id=tool_baidu&post_id={帖子id}&page_no={页数}
@@ -49,13 +50,17 @@ def section_get():
     # 爬取记录 ：  2021.1.13, 8:00  爬取到 24000 post_id
 
 
-
-
 def get_leg():
     """获取美腿图片"""
     path = input("请输入爬取路径，仅支持已存在的目录，或者单级目录:")
-    url = "http://floor.huluxia.com/post/search/ANDROID/2.1?platform=2&market_id=tool_baidu&_key=074A517999865CB0A3DC24034F244DEB1E23E1512BA28A8D07315737041A1E393A13114A41B9FCE24CBD95E0AF7E0C72DC99A8E24218CC70&start={}&count=20&cat_id=56&keyword=%E7%BE%8E%E8%85%BF&flag=0"
-    ask_url(url, path)
+    try:
+        page_num = int(input("请输入页数,页数越大，爬的越慢:"))
+    except ValueError:
+        page_num = 5
+    url = "http://floor.huluxia.com/post/list/ANDROID/2.1?platform=2&market_id=tool_baidu&start={}&count=20&cat_id=56&tag_id=0&sort_by=0"
+    if path[-1] != '/':
+        path += '/'
+    ask_url(url, path, page_num)
 
 
 def get_post_id():
@@ -65,8 +70,6 @@ def get_post_id():
         parse_json(post_id, './img/')
     else:
         parse_json(post_id, './{}/'.format(path))
-
-
 
 
 def main():
@@ -80,6 +83,7 @@ def main():
         print("3. 关键字爬取")
         print("4. 爬取 post_id 对应的帖子")
         print("q. 退出菜单")
+        set_proxy(None)
         flag = input("请输入你的选项:")
         if flag == '1':
             section_get()

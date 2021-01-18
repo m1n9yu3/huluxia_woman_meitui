@@ -104,5 +104,11 @@ def parse_json(post_id, flag=''):
         return
 
 
+def set_proxy(proxy: dict):
+    """用于设置代理"""
+    global proxies
+    proxies = proxy
+
+
 if __name__ == '__main__':
     pass
