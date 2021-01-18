@@ -26,7 +26,6 @@ def multi_thread(idlist, path):
 
 def ask_url(url, path, number=10):
     i = 0
-    page = 0
     post_ids = []
     js = get_json(url.format(i))
     while True:
@@ -38,7 +37,7 @@ def ask_url(url, path, number=10):
             i += 1
         # 指定爬取页数
         number -= 1
-        if number % 5 == 0:
+        if number % 10 == 0:
             multi_thread(idlist=post_ids, path=path)
             if number == 0:
                 break
