@@ -82,6 +82,7 @@ def main():
         print("2. 爬取美腿图片")
         print("3. 关键字爬取")
         print("4. 爬取 post_id 对应的帖子")
+        print("5. 设置代理")
         print("q. 退出菜单")
         set_proxy(None)
         flag = input("请输入你的选项:")
@@ -94,6 +95,9 @@ def main():
             search_key(keyword)
         elif flag == '4':
             get_post_id()
+        elif flag == '5':
+            http_ip = input("请输入: 代理ip地址:端口 ")
+            set_proxy({"http": http_ip})
         elif flag == 'q':
             break
 
