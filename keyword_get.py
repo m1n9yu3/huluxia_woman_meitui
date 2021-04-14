@@ -54,3 +54,7 @@ def search_key(keyword):
           "=%s&start=1&count=20&cat_id=56&keyword=%s&flag=0" % (_key, parse.quote(keyword))
     # print(url)
     ask_url(url, 'search_result/')
+
+
+if __name__ == '__main__':
+    pass
