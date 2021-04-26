@@ -25,7 +25,7 @@ def section_multi_thread(start_id, step):
     #     parse_json(url, start_id+i)
     threads = []
     for i in range(step):
-        threads.append(threading.Thread(target=parse_json, args=(start_id + i,)))
+        threads.append(threading.Thread(target=download_json_image, args=(start_id + i,)))
     for i in threads:
         i.start()
     for i in threads:
@@ -67,9 +67,9 @@ def get_post_id():
     post_id = int(input("请输入 post id："))
     path = input("请输入目录,输入q ,则保存到默认目录：")
     if path == 'q':
-        parse_json(post_id, './img/')
+        download_json_image(post_id, './img/')
     else:
-        parse_json(post_id, './{}/'.format(path))
+        download_json_image(post_id, './{}/'.format(path))
 
 
 def main():

@@ -17,7 +17,7 @@ def multi_thread(idlist, path):
     #     parse_json(url, start_id+i)
     threads = []
     for i in idlist:
-        threads.append(threading.Thread(target=parse_json, args=(i, path)))
+        threads.append(threading.Thread(target=download_json_image, args=(i, path)))
     for i in threads:
         i.start()
     for i in threads:
@@ -36,6 +36,7 @@ def ask_url(url, path, number=10):
             post_ids.append(post_id_i['postID'])
             i += 1
         # 指定爬取页数
+        # print(post_ids)
         number -= 1
         if number % 10 == 0:
             multi_thread(idlist=post_ids, path=path)
