@@ -17,11 +17,13 @@ def multi_thread(idlist, path):
     #     parse_json(url, start_id+i)
     threads = []
     for i in idlist:
-        threads.append(threading.Thread(target=download_json_image, args=(i, path)))
+        threads.append(threading.Thread(target=get_images_url, args=(i, path)))
     for i in threads:
         i.start()
     for i in threads:
         i.join()
+
+
 
 
 def ask_url(url, path, number=10):
