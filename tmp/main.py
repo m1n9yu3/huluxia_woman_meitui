@@ -7,8 +7,8 @@
 """
 
 import threading
-from get_data import *
-from keyword_get import ask_url, search_key
+from tmp.get_data import *
+from tmp.keyword_get import ask_url, search_key
 
 '''
 target : 目标
@@ -74,7 +74,7 @@ def get_post_id():
 
 def main():
     # 清除日志  爬取过程中出现的错误
-    remove_("log.txt")
+    remove_("../log.txt")
     """主模块菜单，将所有功能集合成一个菜单"""
     while True:
         print("------菜单-------")
@@ -103,5 +103,5 @@ def main():
 
 
 if __name__ == '__main__':
-    # main()
-    get_leg()
+    main()
+    # get_leg()

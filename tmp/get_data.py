@@ -12,7 +12,8 @@ import time
 import json
 
 # 代理 ip 爬取
-proxies = {"http": "127.0.0.1:8889"}
+# proxies = {"http": "127.0.0.1:8889"}
+proxies = {}
 
 
 def get_json(url):
@@ -103,7 +104,7 @@ def download_json_image(post_id, flag=''):
         print(post_id, "爬取结束")
         return
     except Exception as e:
-        with open("log.txt", mode="a") as f:
+        with open("../log.txt", mode="a") as f:
             content = "current:{} \npost_id: {}\n error_content:{} \n\n".format(
                 time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), post_id, e)
             f.write(content)
@@ -148,7 +149,7 @@ def parse_json(post_id, flag=''):
         print(post_id, "爬取结束")
         return
     except Exception as e:
-        with open("log.txt", mode="a") as f:
+        with open("../log.txt", mode="a") as f:
             content = "current:{} \npost_id: {}\n error_content:{} \n\n".format(
                 time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), post_id, e)
             f.write(content)
@@ -190,7 +191,7 @@ def get_images_url(post_id, flag=''):
         print(post_id, "爬取结束")
         return image_url_list
     except Exception as e:
-        with open("log.txt", mode="a") as f:
+        with open("../log.txt", mode="a") as f:
             content = "current:{} \npost_id: {}\n error_content:{} \n\n".format(
                 time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), post_id, e)
             f.write(content)

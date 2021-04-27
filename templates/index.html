@@ -1,0 +1,27 @@
+<!-- <img src='http://cdn.u1.huluxia.com/g4/M02/66/87/rBAAdmCGOiOAeuy3AAJvn2IxBj863.jpeg' style="display: inline-block; width: 100%; max-width: 100%; height: auto;"> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    	
+    	img { 
+    		background-size: contain | cover;
+    		width: 100%;
+    		height: auto;
+    	 }
+    </style>
+</head>
+<body>
+
+    {% for signedimage in imagelist %}
+    <img src="{{signedimage}}">
+
+    {% endfor %}
+    
+</body>
+</html>
