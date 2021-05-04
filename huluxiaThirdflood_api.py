@@ -60,7 +60,6 @@ def download_img(path, data, flag):
             f.write(requests.get(url, proxies=proxies).content)
             # print("爬取完成:", url)
 
-    print(data)
     if flag != 0:
         return data
     for i in data:
@@ -204,15 +203,12 @@ def get_images_url(post_id, flag=''):
                 # 采集首页图片
                 image_url_list += download_img(js_dir, js['post']['images'], 1)
 
-            # 保存每一个帖子的 json 数据
-            save_text(js_dir + "js.txt", js)
             # 采集 评论图片
             for i in js['comments']:
                 image_url_list += download_img(js_dir, i['images'], 1)
             # 采集评论 文字
 
             page_num += 1
-        print(post_id, "爬取结束")
         return image_url_list
     except Exception as e:
         with open("log.txt", mode="a") as f:
@@ -280,7 +276,33 @@ def search_key(keyword):
 
 
 def get_random_imageurl(num):
-    return ['http://cdn.u1.huluxia.com/g4/M02/66/87/rBAAdmCGOiOAeuy3AAJvn2IxBj863.jpeg'] * num
+    url = "http://floor.huluxia.com/post/list/ANDROID/2.1?platform=2&market_id=tool_baidu&start={}&count=20&cat_id=56&tag_id=0&sort_by=0"
+    i = 0
+    number = num
+    image_url_list = []
+    js = get_json(url.format(i))
+    if not js['posts']:
+        return []
+    post_list = js['posts']
+    while True:
+        # 判断页面是否正确
+        if len(post_list) == 0:
+            js = get_json(url.format(js['start']))
+            if not js['posts']:
+                break
+            post_list = js['posts']
+            i = 0
+
+        image_url_list += get_images_url(post_list[i]['postID'])
+        i += 1
+        # 指定爬取页数
+        number -= 1
+        if len(image_url_list) >= num:
+            break
+
+        print(image_url_list)
+    # print("爬取完成, 共{} 个帖子".format(i))
+    return image_url_list
 
 
 
