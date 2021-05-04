@@ -17,13 +17,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return render_template('index.html')
 
 @app.route('/image/<num>')
 def displayImage(num):
     # print(num)
     imageurllist = get_random_imageurl(int(num))
-    return  render_template('index.html', imagelist=imageurllist)
+    return  render_template('images.html', imagelist=imageurllist)
 
 if __name__ == '__main__':
     app.run()
