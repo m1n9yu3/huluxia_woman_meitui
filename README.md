@@ -45,7 +45,7 @@ LAN access, you can replace 127.0.0.1 cost machine IP address
 ![Alt text](./src/img/test.jpg)
 
 
-## 目录说明
+## directory description
 
 flask :
     
@@ -59,5 +59,5 @@ src :   resource files
 
 
 
-## If you have the idea of developing together, please contact me
+## If you want to develop with me, please contact me
 m1n9yu3@foxmail.com
