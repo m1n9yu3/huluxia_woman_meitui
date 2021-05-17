@@ -275,7 +275,7 @@ def search_key(keyword):
 
 
 
-def get_random_imageurl(num):
+def get_random_imageurl(num:int) -> list:
     url = "http://floor.huluxia.com/post/list/ANDROID/2.1?platform=2&market_id=tool_baidu&start={}&count=20&cat_id=56&tag_id=0&sort_by=0"
     i = 0
     number = num
@@ -285,7 +285,7 @@ def get_random_imageurl(num):
         return []
     post_list = js['posts']
     while True:
-        # 判断页面是否正确
+        # 判断是否使用完毕
         if len(post_list) == 0:
             js = get_json(url.format(js['start']))
             if not js['posts']:

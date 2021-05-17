@@ -1,68 +1,63 @@
-# 爬取葫芦侠小姐姐 图片
+# crawling huluxia png
 
-使用  python3.7 环境
-拥有多线程优化速度
+python3.7 environment
+Using multithreading to optimize speed
 
-
-接口直接 fidder 抓包获取 
-每个帖子对应一个 postid 
-
-编程改变世界
-
-## 优化日志
-2021.4.14:  准备删掉多线程 ， 使用更快的异步并发来实现图片抓取
+Coding changes the world
 
 
-2021.4.26:  异步计划泡汤，现在想整成 flask 框架， 网页浏览图片， 美滋滋, 新增获取 图片 地址,
-    完了，代码让我写废了， 我啥都看不懂了， 哭了，呜呜呜·
+![葫芦侠三楼](./src/葫芦侠三楼.jpg)
+
+***The project is entertainment***
+
+[简体中文](./src/zh_cn_README.md)
+
+## Optimization log
+2021.4.14:  Ready to delete multithreading, using faster asynchronous concurrency to achieve image capture
+
+2021.4.26: Now I want to integrate the flash framework, browse the pictures on the web, and add a new picture address, Finished, code let me write waste, I can't understand anything, cry
+
+2021.4.27:   The flash framework is finished, the page is not beautified, the logging module is added, and the log information is collected. There is only one simple function: localhost/image/number
+
+2021.5.4:   After a glance, I found that I didn't upload GitHub at all, and the local modified code was gone. Can only change
 
 
-2021.4.27:   flask 框架整好了， 差点页面美化， 增加了logging 模块， 日志信息收集， 只有一个简单的功能， localhost/image/图片数量 
-
-2021.5.4:   瞅了一眼，发现，我根本没有上传 github, 而本地改过的代码也没了。 只能重新改...
-## _key 获取
-
-帐号登陆验证， 然后 fidder 抓包获取
-
-## 功能简介
-
-### 区间爬取
-
-
-```text
-输入:
-1-100 
-
-爬取 postid 1-100 的帖子
+## How to use?
+install pip module
+```shell
+python -m pip install -r requirements.txt
 ```
 
-### 爬取美腿图片
-![menu.png](src/menu.png)
-
-```text
-自动爬取 美腿图片，可以选择目录，也可以选择一个不存在的单级目录，不选目录，则有序存放
+bash run
+```shell
+python web_server.py
 ```
 
+Browser input
+http://127.0.0.1:8999/
 
-### 关键字爬取
+Control the number of pictures
+http://127.0.0.1:8999/image/100
 
-> 需要一个已经登陆过的帐号，才能进行搜索操作 
-> 服务器验证 _key  
-
-
-
-
-### post_id 爬取
-爬取单个 帖子的数据
+LAN access, you can replace 127.0.0.1 cost machine IP address
 
 
-
-## 效果图
-
-![1](src/img/wKgBOV6DBRaAU8vUAAD7zorTCcE030.jpg)
-![2](src/img/wKgBOV6DBQuALWt7AAEkvBaMLdI039.jpg)
-![3](src/img/wKgBOV6DBOCALapaAAHeG0lGdwM243.jpg)
+![Alt text](./src/img/test.jpg)
 
 
+## 目录说明
+
+flask :
+    
+    -- static
+    -- templates
+
+tmp :   Store version iteration, old version file
+
+src :   resource files
 
 
+
+
+## If you have the idea of developing together, please contact me
+m1n9yu3@foxmail.com
