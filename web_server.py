@@ -36,11 +36,18 @@ def hello_world():
     # print(large_image)
     return render_template('index.html', imagelist=display_image, large_image=large_image)
 
+
+@app.route('/favicon.ico')
+def favicon():
+    return app.send_static_file('images/favicon.ico')
+
 @app.route('/image/<num>')
 def displayImage(num):
     # print(num)
     imageurllist = get_random_imageurl(int(num))
     return  render_template('images.html', imagelist=imageurllist)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8999)
