@@ -11,13 +11,15 @@
 
 from flask import *
 from huluxiaThirdflood_api import get_random_imageurl
+import conf
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello_world():
-    image_list = get_random_imageurl(12)
+    # 爬取 12 个帖子
+    image_list = get_random_imageurl(conf.display_num)
     # print(image_list)
     display_image = []
     for i in range(0, len(image_list), 3):

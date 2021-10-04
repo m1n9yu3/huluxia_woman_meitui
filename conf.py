@@ -1,1 +1,1 @@
-display_num = 12
+display_num = 12   # 控制显示帖子数量
