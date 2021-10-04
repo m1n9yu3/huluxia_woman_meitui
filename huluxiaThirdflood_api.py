@@ -300,7 +300,7 @@ def get_random_imageurl(num:int) -> list:
         if len(image_url_list) >= num:
             break
 
-        print(image_url_list)
+        # print(image_url_list)
     # print("爬取完成, 共{} 个帖子".format(i))
     return image_url_list
 
