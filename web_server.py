@@ -41,11 +41,26 @@ def hello_world():
 def favicon():
     return app.send_static_file('images/favicon.ico')
 
-@app.route('/image/<num>')
+@app.route('/<num>')
 def displayImage(num):
-    # print(num)
-    imageurllist = get_random_imageurl(int(num))
-    return  render_template('images.html', imagelist=imageurllist)
+    # 这里数量达到 100 时，会发生 index out of range 异常， 正在想办法整改
+    num = int(num)
+    image_list = get_random_imageurl(num)
+    # print(image_list)
+    display_image = []
+    for i in range(0, len(image_list), 3):
+        try:
+            display_image.append([["#imageModal%d" % i, image_list[i]], ["#imageModal%d" % (i+1), image_list[i+1]], ["#imageModal%d" % (i+2), image_list[i+2]]])
+        except Exception as e:
+            # 报错说明, 爬取到的图片不足3 的倍数
+            pass
+    large_image = []
+    for image in display_image:
+        large_image += [[i[0].replace('#', ""), i[1]] for i in image]
+
+
+    # print(large_image)
+    return render_template('index.html', imagelist=display_image, large_image=large_image)
 
 
 

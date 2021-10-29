@@ -39,14 +39,17 @@ python web_server.py
 浏览器输入 
 http://127.0.0.1:8999/
 
-~~~控制图片数量~~~
-~~~http://127.0.0.1:8999/image/100~~~
+![sample](./img/exp1.jpg)
+
 
 局域网访问，可以将 127.0.0.1 替换成 本机ip地址
 
+数量控制: http://127.0.0.1:8999/30  
+
+
 [comment]: <> (![test]&#40;&#41;)
 
-![Alt text](./src/img/test.jpg)
+![Alt text](./img/test.jpg)
 
 
 ## 目录说明

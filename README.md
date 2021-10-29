@@ -21,6 +21,8 @@ Coding changes the world
 
 2021.5.4:   After a glance, I found that I didn't upload GitHub at all, and the local modified code was gone. Can only change
 
+2021.10.4:  Refactoring the website template， template from : https://www.lanrentuku.com/sucai/121053.html
+
 
 ## How to use?
 install pip module
@@ -36,13 +38,14 @@ python web_server.py
 Browser input
 http://127.0.0.1:8999/
 
-Control the number of pictures
-http://127.0.0.1:8999/image/100
+
+
+![sample](./src/img/exp1.jpg)
 
 LAN access, you can replace 127.0.0.1 cost machine IP address
 
 
-![Alt text](./src/img/test.jpg)
+![png exp](./src/img/test.jpg)
 
 
 ## directory description
